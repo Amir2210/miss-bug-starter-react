@@ -10,7 +10,12 @@ export const bugService = {
   getById,
   save,
   remove,
-  getDefaultFilter
+  getDefaultFilter,
+  getLabels
+}
+
+function getLabels() {
+  return ["critical", "need-CR", "dev-branch", "TEST", "need-CR NOW", "ERROR"]
 }
 
 function query(filterBy) {
@@ -50,7 +55,7 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-  return { txt: "", severity: 0, pageIdx: 0 }
+  return { txt: "", severity: 0, pageIdx: 0, label: "" }
 }
 
 function _createBugs() {

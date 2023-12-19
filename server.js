@@ -15,7 +15,8 @@ app.get("/api/bug", (req, res) => {
   const filterBy = {
     txt: req.query.txt || "",
     severity: req.query.severity || 0,
-    pageIdx: 0
+    pageIdx: req.query.pageIdx,
+    label: req.query.label
   }
   console.log("filterBy:", filterBy)
   bugService

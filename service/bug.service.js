@@ -1,6 +1,8 @@
 import fs from "fs"
 import { utilService } from "./utils.service.js"
 
+const PAGE_SIZE = 3
+
 export const bugService = {
   query,
   getById,
@@ -11,6 +13,7 @@ export const bugService = {
 const bugs = utilService.readJsonFile("data/bug.json")
 
 function query(filterBy) {
+  console.log(filterBy)
   let bugsToReturn = bugs
   if (filterBy.txt) {
     const regExp = new RegExp(filterBy.txt, "i")
@@ -19,6 +22,17 @@ function query(filterBy) {
   if (filterBy.severity) {
     bugsToReturn = bugsToReturn.filter(
       (bug) => bug.severity >= filterBy.severity
+    )
+  }
+  if (filterBy.pageIdx !== undefined) {
+    const startIdx = filterBy.pageIdx * PAGE_SIZE
+    bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
+  }
+
+  if (filterBy.labels) {
+    // Check if any of the labelss is included
+    bugsToReturn = bugsToReturn.filter((bug) =>
+      bug.labels.some((labels) => labels.includes(filterBy.labels))
     )
   }
 
