@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "abc123",
+    "title": "Cannot save a Car",
+    "description": "problem when clicking Save",
+    "severity": 3,
+    "createdAt": 1542107359454
+  },
+  {
+    "_id": "abc456",
+    "title": "Cannot save a Book",
+    "description": "problem when clicking remove",
+    "severity": 5,
+    "createdAt": 1542107359454
+  }
+]
