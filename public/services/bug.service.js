@@ -14,19 +14,18 @@ export const bugService = {
 }
 
 function query(filterBy) {
-  return axios
-    .get(BASE_URL)
-    .then((res) => res.data)
-    .then((bugs) => {
-      if (filterBy.txt) {
-        const regExp = new RegExp(filterBy.txt, "i")
-        bugs = bugs.filter((bug) => regExp.test(bug.title))
-      }
-      if (filterBy.severity) {
-        bugs = bugs.filter((bug) => bug.severity >= filterBy.severity)
-      }
-      return bugs
-    })
+  console.log("filterBy:", filterBy)
+  return axios.get(BASE_URL, { params: filterBy }).then((res) => res.data)
+  // .then((bugs) => {
+  //   if (filterBy.txt) {
+  //     const regExp = new RegExp(filterBy.txt, "i")
+  //     bugs = bugs.filter((bug) => regExp.test(bug.title))
+  //   }
+  //   if (filterBy.severity) {
+  //     bugs = bugs.filter((bug) => bug.severity >= filterBy.severity)
+  //   }
+  //   return bugs
+  // })
 }
 function getById(bugId) {
   return axios.get(BASE_URL + bugId).then((res) => res.data)
@@ -51,7 +50,7 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-  return { txt: "", severity: "" }
+  return { txt: "", severity: 0, pageIdx: 0 }
 }
 
 function _createBugs() {

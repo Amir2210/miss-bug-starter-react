@@ -47,7 +47,7 @@ export function BugFilter({ filterBy, onSetFilter }) {
           name="txt"
         />
 
-        <label htmlFor="severity">severity: </label>
+        <label htmlFor="severity">minSeverity: </label>
         <input
           value={severity || ""}
           onChange={handleChange}

@@ -11,8 +11,15 @@ app.get("/nono", (req, res) => res.redirect("/"))
 
 // Get Bugs (READ)
 app.get("/api/bug", (req, res) => {
+  console.log("req.query:", req.query)
+  const filterBy = {
+    txt: req.query.txt || "",
+    severity: req.query.severity || 0,
+    pageIdx: 0
+  }
+  console.log("filterBy:", filterBy)
   bugService
-    .query()
+    .query(filterBy)
     .then((bugs) => {
       res.send(bugs)
     })

@@ -11,7 +11,7 @@ export function BugIndex() {
 
   useEffect(() => {
     loadBugs()
-  }, [])
+  }, [filterBy])
 
   function loadBugs() {
     bugService
