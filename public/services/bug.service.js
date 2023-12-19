@@ -40,14 +40,14 @@ function remove(bugId) {
 
 function save(bug) {
   const url = BASE_URL + "save"
-  let queryParams = `?title=${bug.title}&description=${bug.description}&severity${bug.severity}&createdAt=${bug.createdAt}`
-  if (bug._id) queryParams += `&_id=${bug._id}`
-  return axios.get(url + queryParams)
-  //   if (bug._id) {
-  //     return storageService.put(STORAGE_KEY, bug)
-  //   } else {
-  //     return storageService.post(STORAGE_KEY, bug)
-  //   }
+  // let queryParams = `?title=${bug.title}&description=${bug.description}&severity${bug.severity}&createdAt=${bug.createdAt}`
+  // if (bug._id) queryParams += `&_id=${bug._id}`
+  // return axios.get(url + queryParams)
+  if (bug._id) {
+    return axios.put(BASE_URL, bug).then((res) => res.data)
+  } else {
+    return axios.post(BASE_URL, bug).then((res) => res.data)
+  }
 }
 
 function getDefaultFilter() {

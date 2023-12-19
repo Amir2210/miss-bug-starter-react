@@ -1,7 +1,21 @@
 [
   {
+    "title": "bbb",
+    "description": "lol",
+    "severity": 23,
+    "createdAt": 1702996813052,
+    "_id": "1D7Ip"
+  },
+  {
+    "title": "blabla",
+    "description": "problem when clicking Save",
+    "severity": 133,
+    "createdAt": 1702996085391,
+    "_id": "gkOKe"
+  },
+  {
     "_id": "abc123",
-    "title": "Cannot save a Car",
+    "title": "king",
     "description": "problem when clicking Save",
     "severity": 3,
     "createdAt": 1542107359454
@@ -10,7 +24,7 @@
     "_id": "abc456",
     "title": "Cannot save a Book",
     "description": "problem when clicking remove",
-    "severity": 5,
+    "severity": 44,
     "createdAt": 1542107359454
   }
 ]
