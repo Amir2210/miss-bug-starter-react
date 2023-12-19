@@ -4,28 +4,32 @@
     "description": "vvvvvcdffdfgdfg",
     "severity": 444,
     "createdAt": 1703003226477,
-    "_id": "e7FLl"
+    "_id": "e7FLl",
+    "labels": ["puki"]
   },
   {
     "_id": "MDIXB",
     "title": "coco",
     "description": "bvbvbv",
     "severity": 11,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "labels": ["muki"]
   },
   {
     "title": "vvv",
     "description": "fgdfgfdgdf",
     "severity": 22,
     "createdAt": 1703001347064,
-    "_id": "kTVpW"
+    "_id": "kTVpW",
+    "labels": ["puki", "muki"]
   },
   {
     "_id": "QrFPu",
     "title": "bbb",
     "description": "fghfghfgh",
     "severity": 33,
-    "createdAt": 1542107359454
+    "createdAt": 1542107359454,
+    "labels": ["suki"]
   },
   {
     "_id": "abc123",

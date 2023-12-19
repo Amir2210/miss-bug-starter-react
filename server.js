@@ -16,9 +16,11 @@ app.get("/api/bug", (req, res) => {
     txt: req.query.txt || "",
     severity: req.query.severity || 0,
     pageIdx: req.query.pageIdx,
-    label: req.query.label
+    label: req.query.label,
+    sortBy: req.query.sortBy
   }
-  console.log("filterBy:", filterBy)
+
+  console.log("filterBy at server:", filterBy)
   bugService
     .query(filterBy)
     .then((bugs) => {

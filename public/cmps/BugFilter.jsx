@@ -16,7 +16,7 @@ export function BugFilter({ filterBy, onSetFilter }) {
   function handleChange({ target }) {
     const field = target.name
     let value = target.value
-    // console.log("value:", value)
+    console.log("value:", value)
 
     switch (target.type) {
       case "number":
@@ -42,7 +42,7 @@ export function BugFilter({ filterBy, onSetFilter }) {
 
   const labelsArray = bugService.getLabels()
 
-  const { txt, severity, label } = filterByToEdit
+  const { txt, severity, label, sortBy } = filterByToEdit
   return (
     <section className="car-filter main-layout full">
       <h2>Filter Our Bugs</h2>
@@ -59,7 +59,11 @@ export function BugFilter({ filterBy, onSetFilter }) {
         <label htmlFor="label">label: </label>
         <select name="label" id="" value={label} onChange={handleChange}>
           {labelsArray.map((label) => {
-            return <option value={label}>{label}</option>
+            return (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            )
           })}
           {/* <option value="TEST">TEST</option>
           <option value="b">b</option>
@@ -75,6 +79,19 @@ export function BugFilter({ filterBy, onSetFilter }) {
           id="severity"
           name="severity"
         />
+
+        <label htmlFor="sortBy">sortBy:</label>
+        <select
+          name="sortBy"
+          id="sortBy"
+          onChange={handleChange}
+          value={sortBy || ""}
+        >
+          <option value="">select</option>
+          <option value="title">title</option>
+          <option value="severity">severity </option>
+          <option value="createdAt">date</option>
+        </select>
 
         <button>Submit</button>
       </form>

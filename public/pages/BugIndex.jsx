@@ -16,6 +16,7 @@ export function BugIndex() {
   }, [filterBy])
 
   function loadBugs() {
+    console.log("filterBy:", filterBy)
     bugService
       .query(filterBy)
       .then(setBugs)
@@ -110,7 +111,7 @@ export function BugIndex() {
     return value === undefined
   }
 
-  const { txt, severity, pageIdx, label } = filterBy
+  const { txt, severity, pageIdx, label, sortBy } = filterBy
 
   if (!bugs) return <div>Loading...</div>
   return (
@@ -126,7 +127,7 @@ export function BugIndex() {
         <button onClick={onAddBug}>Add Bug ⛐</button>
         <BugFilter
           filteter
-          filterBy={{ txt, severity, label }}
+          filterBy={{ txt, severity, label, sortBy }}
           onSetFilter={debounceOnSetFilter.current}
         />
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />

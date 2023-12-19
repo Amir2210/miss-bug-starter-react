@@ -15,11 +15,20 @@ export const bugService = {
 }
 
 function getLabels() {
-  return ["critical", "need-CR", "dev-branch", "TEST", "need-CR NOW", "ERROR"]
+  return [
+    "critical",
+    "need-CR",
+    "dev-branch",
+    "TEST",
+    "need-CR NOW",
+    "ERROR",
+    "puki",
+    "muki",
+    "suki"
+  ]
 }
 
 function query(filterBy) {
-  console.log("filterBy:", filterBy)
   return axios.get(BASE_URL, { params: filterBy }).then((res) => res.data)
   // .then((bugs) => {
   //   if (filterBy.txt) {
@@ -55,7 +64,7 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-  return { txt: "", severity: 0, pageIdx: 0, label: "" }
+  return { txt: "", severity: 0, pageIdx: 0, label: "", sortBy: "" }
 }
 
 function _createBugs() {

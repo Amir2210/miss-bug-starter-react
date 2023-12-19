@@ -13,7 +13,7 @@ export const bugService = {
 const bugs = utilService.readJsonFile("data/bug.json")
 
 function query(filterBy) {
-  console.log(filterBy)
+  console.log("filterBy:", filterBy)
   let bugsToReturn = bugs
   if (filterBy.txt) {
     const regExp = new RegExp(filterBy.txt, "i")
@@ -29,11 +29,22 @@ function query(filterBy) {
     bugsToReturn = bugsToReturn.slice(startIdx, startIdx + PAGE_SIZE)
   }
 
-  if (filterBy.labels) {
-    // Check if any of the labelss is included
-    bugsToReturn = bugsToReturn.filter((bug) =>
-      bug.labels.some((labels) => labels.includes(filterBy.labels))
-    )
+  if (filterBy.label) {
+    bugsToReturn = bugs.filter((bug) => {
+      return bug.labels.includes(filterBy.label)
+    })
+  }
+
+  if (filterBy.sortBy === "title") {
+    bugs.sort((bugA, bugB) => bugA.title.localeCompare(bugB.title))
+  }
+
+  if (filterBy.sortBy === "severity") {
+    bugs.sort((bugA, bugB) => bugA.severity - bugB.severity)
+  }
+
+  if (filterBy.sortBy === "createdAt") {
+    bugs.sort((bugA, bugB) => bugA.createdAt - bugB.createdAt)
   }
 
   return Promise.resolve(bugsToReturn)
